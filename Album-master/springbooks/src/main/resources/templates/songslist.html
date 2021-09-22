@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Album</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"/>
+<style>
+
+    #nav{
+        margin: 200px 0 0 0;
+    }
+    #link{
+        margin: 15px 0px 0px 20px;
+    }
+    #link2{
+        margin: 15px 0px 0px 20px;
+    }
+</style>
+
+</head>
+<body class="d-flex h-100 text-center text-white bg-dark">
+<header class="mb-auto">
+    <div>
+        <h3 class="float-md-start mb-10">Album</h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+
+            <a  class="nav-link active" aria-current="page" href="/index" th:bgcolor="white" content="white">Home</a>
+            <a  class="nav-link" href="add">New song</a>
+        </nav>
+    </div>
+</header>
+</br>
+<div class="container">
+    <table id="nav" class="table table-hover table-dark">
+    <thead>
+    <tr>
+        <th scope="col">Author</th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
+    </thead> <tr  th:each ="song : ${songs}">
+                <td th:utext="${song.getName()}">...</td>
+                <td th:utext="${song.getAuthor()}">...</td>
+                <td><a id="link" th:href="'/edit/'+${song.getId()}">edit </a></td>
+                <td><a id="link2" th:href="'/delete/'+${song.getId()}">delete </a></td>
+
+            </tr>
+    </table>
+
+
+</div>
+<br/><br/>
+</body>
+</html>

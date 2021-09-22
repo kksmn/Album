@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"/>
+    <style>
+        h3{
+            margin: 20px 2200px 50px -100px;
+        }
+        form{
+            margin: 120px -500px 50px 600px;
+        }
+        label{
+            margin: 5px 60px 10px -80px;
+        }
+        #submit{
+            margin: 20px 370px -50px -630px;
+        }
+    </style>
+</head>
+<body class="d-flex h-100 text-center text-white bg-dark">
+<div class="container">
+    <h3>Album</h3>
+  <!--  <form action="'/edit'+${song.getId()}"  method="POST">-->
+    <div th:each ="song : ${song}">
+        <form th:action="'/editsong/'+${song.getId()}" method="POST">
+            <tr>
+                <div class="col-md-2">
+                    <label for="cc-number" class="form-label">Author</label>
+                    </br>
+                    <td><input  class="form-control" id="cc-number" type="text" th:value="${song.getAuthor()}" name="author"></td>
+                    <label for="cc-numbers" class="form-label">Name</label>
+                    </br>
+                    <td><input  class="form-control" id="cc-numbers" type="text" th:value="${song.getName()}" name="name"></td>
+                </div>
+            </tr>
+            <input id="submit" class="btn btn-lg btn-secondary fw-bold border-white bg-dark" type="submit" value="Edit song" />
+        </form>
+    </div>
+</div>
+</body>
+</html>
